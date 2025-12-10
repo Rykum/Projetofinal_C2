@@ -1,0 +1,4 @@
+Merlin;250
+Gandalf;180
+Hermione;165
+Harry;120

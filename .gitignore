@@ -1,0 +1,22 @@
+# Executáveis
+*.exe
+*.out
+jogo
+
+# Arquivos de objeto
+*.o
+*.obj
+
+# Arquivos temporários
+*.tmp
+*.swp
+*~
+
+# Diretórios do sistema
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.code-workspace
