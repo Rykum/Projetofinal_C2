@@ -19,14 +19,14 @@ int rolarDado(int faces) {
  // Retorno: 1 para sucesso, 0 para falha
  
 int testePericia(int faces) {
-    int valorDado = rolarDado(faces);
+    int resultado = rolarDado(faces);
     int limiarSucesso = (faces / 2) + 1;  // Aritmética inteira
     
     printf("\n Rolando dado de %d faces...\n", faces);
-    printf("Resultado: %d\n", valorDado);
+    printf("Resultado: %d\n", resultado);
     printf("Necessário: %d ou mais\n", limiarSucesso);
     
-    if (valorDado >= limiarSucesso) {
+    if (resultado >= limiarSucesso) {
         return 1;  // Sucesso
     } else {
         return 0;  // Falha

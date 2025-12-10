@@ -6,7 +6,7 @@
 #include <string.h>
 #include <time.h>
 
-// Constantes do jogo
+// Constantes globais do jogo
 #define MAX_NOME 100
 #define FACES_DADO 6
 #define MAX_TEXTO 1000

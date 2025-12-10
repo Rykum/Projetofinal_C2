@@ -1,22 +1,13 @@
-═══════════════════════════════════════════════════════════════════════════
+
 DOCUMENTAÇÃO DO PROJETO
 UTFPR - ACADEMIA DE MAGIA TECNOLÓGICA
 Jogo de RPG em Modo Texto Desenvolvido em Linguagem C
-═══════════════════════════════════════════════════════════════════════════
-
-AUTOR: [Seu Nome]
-DISCIPLINA: Programação em C
-DATA: Dezembro/2025
-
-═══════════════════════════════════════════════════════════════════════════
-
 
 1. RESUMO DO PROJETO
-═══════════════════════════════════════════════════════════════════════════
 
-Este projeto consiste em um jogo de RPG (Role-Playing Game) em modo texto, 
+Este projeto consiste em um jogo de RPG  em modo texto, 
 desenvolvido inteiramente em linguagem C, ambientado em um mundo acadêmico 
-de fantasia onde a UTFPR é transformada em uma "Academia de Magia Tecnológica".
+de fantasia onde a UTFPR é uma "Academia de Magia Tecnológica".
 
 O jogo permite que o jogador:
 • Escolha seu nome e crie um personagem mago/bruxa
@@ -31,16 +22,16 @@ OBJETIVOS DIDÁTICOS:
 O projeto foi desenvolvido com fins educacionais, implementando de forma 
 completa e didática todos os principais conceitos de programação em C:
 
-✓ Ponteiros (declaração, uso, passagem por referência)
-✓ Alocação dinâmica de memória (malloc, realloc, free)
-✓ Estruturas de dados (structs, vetores, matrizes)
-✓ Manipulação de strings
-✓ Manipulação de arquivos (leitura e escrita)
-✓ Modularização de código (divisão em múltiplos arquivos)
-✓ Funções com passagem de parâmetros por valor e referência
-✓ Estruturas de controle (if, else, switch, for, while)
-✓ Algoritmos de ordenação (Bubble Sort implementado manualmente)
-✓ Tratamento de erros e validação de entrada
+- Ponteiros (declaração, uso, passagem por referência)
+- Alocação dinâmica de memória (malloc, realloc, free)
+- Estruturas de dados (structs, vetores, matrizes)
+- Manipulação de strings
+- Manipulação de arquivos (leitura e escrita)
+- Modularização de código (divisão em múltiplos arquivos)
+- Funções com passagem de parâmetros por valor e referência
+- Estruturas de controle (if, else, switch, for, while)
+- Algoritmos de ordenação (Bubble Sort implementado manualmente)
+- Tratamento de erros e validação de entrada
 
 MECÂNICA DO JOGO:
 
@@ -51,137 +42,6 @@ ou falha de cada ação importante:
 • Para sucesso, o valor deve ser maior ou igual a 4 (metade das faces + 1)
 • Sucessos concedem pontos; falhas resultam em penalidades
 • A pontuação final determina o título conquistado pelo jogador
-
-
-═══════════════════════════════════════════════════════════════════════════
-
-
-2. ESTRUTURA DO CÓDIGO
-═══════════════════════════════════════════════════════════════════════════
-
-O projeto está organizado em uma estrutura modular de diretórios, seguindo 
-boas práticas de desenvolvimento em C:
-
-Projetofinal_C2/
-│
-├── src/
-│   ├── main.c           → Arquivo principal com função main e lógica do menu
-│   └── funcoes.c        → Implementação de todas as funções do jogo
-│
-├── include/
-│   └── funcoes.h        → Cabeçalho com structs e protótipos de funções
-│
-├── data/
-│   └── ranking.txt      → Arquivo de dados do ranking (nome;pontuação)
-│
-└── docs/
-    └── documentacao.txt → Este documento
-
-
-DESCRIÇÃO DOS DIRETÓRIOS:
-
-/src
-  Contém os arquivos de código-fonte (.c) do projeto.
-  - main.c: Ponto de entrada do programa, controla o fluxo principal e o menu
-  - funcoes.c: Implementa todas as funcionalidades do jogo
-
-/include
-  Contém os arquivos de cabeçalho (.h) com declarações de estruturas e funções.
-  - funcoes.h: Define structs, constantes e protótipos de todas as funções
-
-/data
-  Armazena arquivos de dados utilizados pelo programa.
-  - ranking.txt: Armazena o ranking dos jogadores (persistência em arquivo)
-
-/docs
-  Contém a documentação do projeto.
-
-
-═══════════════════════════════════════════════════════════════════════════
-
-
-3. DESCRIÇÃO DOS MÓDULOS
-═══════════════════════════════════════════════════════════════════════════
-
-3.1 ARQUIVO: funcoes.h
-───────────────────────────────────────────────────────────────────────────
-
-FUNÇÃO: Arquivo de cabeçalho principal do projeto
-
-CONTEÚDO:
-• Inclusão de bibliotecas padrão (stdio.h, stdlib.h, string.h, time.h)
-• Definição de constantes do jogo (MAX_NOME, FACES_DADO, etc.)
-• Definição de 5 estruturas (structs):
-  1. Jogador - representa o jogador com nome, pontuação e mana
-  2. EntradaRanking - entrada individual do ranking
-  3. Evento - capítulo da narrativa com opções e consequências
-  4. Professor - representa um professor da academia
-  5. Academia - representa a escola (contém vetor de professores)
-• Protótipos de todas as funções utilizadas no projeto (30+ funções)
-• Guardas de inclusão (#ifndef, #define, #endif)
-
-REQUISITOS DEMONSTRADOS:
-✓ Estruturas heterogêneas (5 structs diferentes)
-✓ Structs aninhadas (Academia contém vetor de Professor)
-✓ Organização e modularização de código
-
-
-3.2 ARQUIVO: funcoes.c
-───────────────────────────────────────────────────────────────────────────
-
-FUNÇÃO: Implementação de todas as funções do jogo
-
-PRINCIPAIS GRUPOS DE FUNÇÕES:
-
-A) SISTEMA DE DADO (3 funções)
-   • rolarDado() - Gera número aleatório entre 1 e N faces
-   • testePericia() - Implementa regra de sucesso (>= metade + 1)
-   • mostrarResultadoDado() - Exibe resultado visual do teste
-
-B) GERENCIAMENTO DE RANKING (6 funções)
-   • carregarRanking() - Lê ranking do arquivo (malloc)
-   • salvarRanking() - Salva ranking no arquivo
-   • adicionarAoRanking() - Adiciona novo jogador (realloc)
-   • ordenarRanking() - Ordena por pontuação (Bubble Sort)
-   • exibirRanking() - Mostra ranking formatado
-   • liberarRanking() - Libera memória (free)
-
-C) GERENCIAMENTO DO JOGADOR (4 funções)
-   • inicializarJogador() - Cadastra nome e inicializa atributos
-   • exibirStatusJogador() - Mostra status atual
-   • obterTituloFinal() - Retorna título baseado em pontuação
-   • exibirResumoFinal() - Exibe resumo ao final da campanha
-
-D) NARRATIVA E EVENTOS (3 funções)
-   • inicializarEventos() - Preenche vetor com 5 capítulos
-   • exibirEvento() - Mostra narrativa e opções
-   • executarEvento() - Processa escolha e atualiza pontuação
-
-E) INTERFACE E MENU (4 funções)
-   • exibirCabecalho() - Mostra arte ASCII do título
-   • exibirMenuPrincipal() - Exibe menu de opções
-   • limparBuffer() - Limpa buffer de entrada
-   • pausar() - Pausa até usuário pressionar ENTER
-
-F) FUNÇÕES AUXILIARES COM MATRIZES (3 funções)
-   • preencherMatrizSalas() - Preenche matriz de strings
-   • exibirMapaSalas() - Mostra mapa da academia
-   • inicializarAcademia() - Inicializa struct com dados
-
-TOTAL: Aproximadamente 26 funções implementadas
-
-REQUISITOS DEMONSTRADOS:
-✓ Manipulação de arquivos (fopen, fclose, fscanf, fprintf, fgets)
-✓ Alocação dinâmica (malloc, realloc, free)
-✓ Ponteiros (passagem por referência, ponteiro para ponteiro)
-✓ Vetores e matrizes como parâmetros de função
-✓ Strings (strcpy, strlen, fgets)
-✓ Algoritmo de ordenação manual (Bubble Sort)
-✓ Tratamento de erros (verificação de NULL)
-
-
-3.3 ARQUIVO: main.c
-───────────────────────────────────────────────────────────────────────────
 
 FUNÇÃO: Arquivo principal que contém a função main e a lógica de alto nível
 
@@ -208,88 +68,14 @@ FLUXO PRINCIPAL:
 5. Liberação de memória e encerramento
 
 REQUISITOS DEMONSTRADOS:
-✓ Uso de srand(time(NULL)) para números aleatórios
-✓ Declaração e uso de ponteiros
-✓ Estruturas de controle (switch, while, for)
-✓ Chamadas de funções modulares
-✓ Gerenciamento de memória (alocação e liberação)
+- Uso de srand(time(NULL)) para números aleatórios
+- Declaração e uso de ponteiros
+- Estruturas de controle (switch, while, for)
+- Chamadas de funções modulares
+- Gerenciamento de memória (alocação e liberação)
 
+ COMO COMPILAR E EXECUTAR
 
-═══════════════════════════════════════════════════════════════════════════
-
-
-4. REQUISITOS ATENDIDOS E LOCALIZAÇÃO NO CÓDIGO
-═══════════════════════════════════════════════════════════════════════════
-
-┌─────────────────────────────────────────────────────────────────────────┐
-│ REQUISITO                     │ ARQUIVO      │ FUNÇÃO/LINHA             │
-├───────────────────────────────┼──────────────┼──────────────────────────┤
-│ Funções de entrada/saída      │ funcoes.c    │ Todas (printf, scanf)    │
-│                               │ main.c       │ Menu e interações        │
-├───────────────────────────────┼──────────────┼──────────────────────────┤
-│ Estruturas de controle        │ funcoes.c    │ testePericia() - if/else │
-│ (if, else, loops)             │ funcoes.c    │ ordenarRanking() - for   │
-│                               │ main.c       │ main() - switch, while   │
-├───────────────────────────────┼──────────────┼──────────────────────────┤
-│ Ponteiros                     │ funcoes.c    │ inicializarJogador()     │
-│                               │ funcoes.c    │ adicionarAoRanking()     │
-│                               │ main.c       │ executarCampanha()       │
-├───────────────────────────────┼──────────────┼──────────────────────────┤
-│ Alocação dinâmica (malloc)    │ funcoes.c    │ carregarRanking()        │
-├───────────────────────────────┼──────────────┼──────────────────────────┤
-│ Realocação (realloc)          │ funcoes.c    │ adicionarAoRanking()     │
-├───────────────────────────────┼──────────────┼──────────────────────────┤
-│ Liberação (free)              │ funcoes.c    │ liberarRanking()         │
-│                               │ main.c       │ main() - antes de sair   │
-├───────────────────────────────┼──────────────┼──────────────────────────┤
-│ Funções com vetores           │ funcoes.c    │ inicializarEventos()     │
-│                               │ funcoes.c    │ ordenarRanking()         │
-│                               │ main.c       │ executarCampanha()       │
-├───────────────────────────────┼──────────────┼──────────────────────────┤
-│ Funções com matrizes          │ funcoes.c    │ preencherMatrizSalas()   │
-│                               │ funcoes.c    │ exibirMapaSalas()        │
-│                               │ main.c       │ executarCampanha()       │
-├───────────────────────────────┼──────────────┼──────────────────────────┤
-│ Estruturas homogêneas         │ funcoes.h    │ Arrays de char, int      │
-│ (vetores, strings)            │ funcoes.c    │ Diversos                 │
-├───────────────────────────────┼──────────────┼──────────────────────────┤
-│ Estruturas heterogêneas       │ funcoes.h    │ 5 structs definidas      │
-│ (structs)                     │ funcoes.c    │ Uso em todas as funções  │
-├───────────────────────────────┼──────────────┼──────────────────────────┤
-│ Vetores de struct             │ main.c       │ Evento eventos[5]        │
-│                               │ funcoes.h    │ Professor professores[3] │
-├───────────────────────────────┼──────────────┼──────────────────────────┤
-│ Structs aninhadas             │ funcoes.h    │ Academia (com Professor) │
-│                               │ main.c       │ inicializarAcademia()    │
-├───────────────────────────────┼──────────────┼──────────────────────────┤
-│ Struct por valor              │ funcoes.c    │ adicionarAoRanking()     │
-├───────────────────────────────┼──────────────┼──────────────────────────┤
-│ Struct por referência         │ funcoes.c    │ inicializarJogador()     │
-│                               │ funcoes.c    │ executarEvento()         │
-├───────────────────────────────┼──────────────┼──────────────────────────┤
-│ Manipulação de arquivos       │ funcoes.c    │ carregarRanking()        │
-│ (fopen, fclose, etc.)         │ funcoes.c    │ salvarRanking()          │
-├───────────────────────────────┼──────────────┼──────────────────────────┤
-│ Tratamento de erros           │ funcoes.c    │ Verificações de NULL     │
-│                               │ funcoes.c    │ Validação de entradas    │
-│                               │ main.c       │ Switch - default         │
-├───────────────────────────────┼──────────────┼──────────────────────────┤
-│ Modularização                 │ 3 arquivos   │ main.c, funcoes.c, .h    │
-│                               │ 4 pastas     │ src, include, data, docs │
-├───────────────────────────────┼──────────────┼──────────────────────────┤
-│ Sistema de dado               │ funcoes.c    │ rolarDado()              │
-│ (regra metade + 1)            │ funcoes.c    │ testePericia()           │
-├───────────────────────────────┼──────────────┼──────────────────────────┤
-│ Algoritmo de ordenação        │ funcoes.c    │ ordenarRanking()         │
-│ manual (Bubble Sort)          │              │ (implementação completa) │
-└─────────────────────────────────────────────────────────────────────────┘
-
-
-═══════════════════════════════════════════════════════════════════════════
-
-
-5. COMO COMPILAR E EXECUTAR
-═══════════════════════════════════════════════════════════════════════════
 
 COMPILAÇÃO (GCC):
 
@@ -319,294 +105,32 @@ OBSERVAÇÕES:
   caracteres especiais em alguns terminais)
 
 
-═══════════════════════════════════════════════════════════════════════════
-
-
-6. FUNCIONALIDADES IMPLEMENTADAS
-═══════════════════════════════════════════════════════════════════════════
-
-6.1 MENU PRINCIPAL
-───────────────────────────────────────────────────────────────────────────
-O programa inicia com um menu oferecendo três opções:
-1. Iniciar Nova Campanha - Começa uma nova jornada
-2. Ver Ranking - Exibe o ranking ordenado por pontuação
-3. Sair - Encerra o programa (liberando memória)
-
-
-6.2 SISTEMA DE CAMPANHA
-───────────────────────────────────────────────────────────────────────────
-• Cadastro do nome do jogador
-• 5 capítulos narrativos sequenciais
-• Cada capítulo apresenta:
-  - Texto de narrativa contextualizada
-  - 2 opções de ação
-  - Teste de perícia com dado de 6 faces
-  - Ajuste de pontuação baseado em sucesso/falha
-• Exibição constante do status (nome, pontos, mana)
-• Resumo final com título conquistado
-
-
-6.3 SISTEMA DE DADO
-───────────────────────────────────────────────────────────────────────────
-• Dado de 6 faces (configurável via constante)
-• Regra fixa: sucesso em 4, 5 ou 6 (metade + 1)
-• Exibição clara do resultado do lançamento
-• Integração com sistema de pontuação
-
-
-6.4 SISTEMA DE PONTUAÇÃO
-───────────────────────────────────────────────────────────────────────────
-• Pontos ganhos por sucessos (varia de 30 a 60 pontos)
-• Penalidades por falhas (varia de 5 a 20 pontos)
-• Bônus extra para escolhas estratégicas
-• Títulos baseados em faixas de pontuação:
-  - 200+  : Arquimago Supremo
-  - 150+  : Mago Especialista
-  - 100+  : Feiticeiro Competente
-  - 50+   : Aprendiz Promissor
-  - 0-49  : Iniciante em Magia
-
-
-6.5 SISTEMA DE RANKING
-───────────────────────────────────────────────────────────────────────────
-• Armazenamento persistente em arquivo (data/ranking.txt)
-• Formato: nome;pontuacao (um por linha)
-• Carregamento automático ao iniciar o programa
-• Adição de novos jogadores ao final de cada partida
-• Ordenação decrescente por pontuação (Bubble Sort)
-• Exibição formatada com posição, nome e pontos
-• Salvamento automático após cada partida
-
-
-6.6 NARRATIVA
-───────────────────────────────────────────────────────────────────────────
-
-Capítulo 1: A Chegada
-  Introdução à academia e primeiro teste de habilidade mágica
-
-Capítulo 2: Aula de Ponteiros Mágicos
-  Primeira aula com conceitos de programação adaptados para magia
-
-Capítulo 3: Prova de Estruturas Mágicas
-  Primeiro exame prático com desafio de organização
-
-Capítulo 4: Labirinto dos Arquivos Antigos
-  Desafio em equipe com dilema entre cooperação e individualismo
-
-Capítulo 5: O Desafio do Dragão de Dados
-  Exame final com todos os conhecimentos adquiridos
-
-
-═══════════════════════════════════════════════════════════════════════════
-
-
-7. DIFICULDADES ENCONTRADAS
-═══════════════════════════════════════════════════════════════════════════
-
-Durante o desenvolvimento deste projeto, algumas dificuldades típicas de 
-programação em C foram enfrentadas:
-
-
-7.1 GERENCIAMENTO DE MEMÓRIA DINÂMICA
-───────────────────────────────────────────────────────────────────────────
-
-A alocação e liberação de memória exigiu atenção especial para evitar:
-• Memory leaks (vazamentos de memória)
-• Dangling pointers (ponteiros pendentes)
-• Double free (liberação dupla)
-
-Solução adotada:
-• Sempre verificar se malloc/realloc retornam NULL
-• Liberar memória antes de encerrar o programa
-• Usar ponteiros para ponteiros quando necessário modificar o ponteiro original
-• Setar ponteiros como NULL após free (boa prática)
-
-
-7.2 MANIPULAÇÃO DE ARQUIVOS
-───────────────────────────────────────────────────────────────────────────
-
-Trabalhar com arquivos apresentou desafios como:
-• Verificar se o arquivo existe antes de ler
-• Garantir que o arquivo seja fechado após uso
-• Tratar erros de abertura/leitura/escrita
-• Formatar corretamente os dados (usar delimitador adequado)
-
-Solução adotada:
-• Sempre verificar se fopen retorna NULL
-• Usar fclose em todos os caminhos de execução
-• Implementar mensagens de erro claras
-• Usar formato simples "nome;pontuacao" para facilitar parsing
-
-
-7.3 PONTEIROS E PASSAGEM POR REFERÊNCIA
-───────────────────────────────────────────────────────────────────────────
-
-O uso de ponteiros, especialmente ponteiros para ponteiros, exigiu 
-compreensão profunda:
-• Quando usar * e & corretamente
-• Diferença entre passar struct por valor vs. por referência
-• Ponteiro para ponteiro para modificar vetor dinâmico
-
-Solução adotada:
-• Comentar claramente o propósito de cada ponteiro
-• Usar nomenclatura significativa
-• Desenhar diagramas mentais da estrutura de memória
-
-
-7.4 STRINGS EM C
-───────────────────────────────────────────────────────────────────────────
-
-Trabalhar com strings (arrays de char) apresentou peculiaridades:
-• Lembrar do caractere nulo '\0'
-• Usar fgets corretamente (remove newline)
-• Tamanho fixo vs. alocação dinâmica
-• Funções de string (strcpy, strlen, etc.)
-
-Solução adotada:
-• Sempre reservar espaço para '\0'
-• Criar constante MAX_NOME para padronizar tamanhos
-• Remover '\n' deixado por fgets
-• Usar strncpy quando apropriado para evitar buffer overflow
-
-
-7.5 LIMPEZA DE BUFFER DE ENTRADA
-───────────────────────────────────────────────────────────────────────────
-
-Misturar scanf e fgets causou problemas com caracteres residuais no buffer.
-
-Solução adotada:
-• Implementar função limparBuffer() dedicada
-• Chamar antes de fgets após scanf
-• Documentar quando e por que usar
-
-
-7.6 ORGANIZAÇÃO E MODULARIZAÇÃO
-───────────────────────────────────────────────────────────────────────────
-
-Dividir o código em múltiplos arquivos exigiu planejamento:
-• Decidir o que vai em cada arquivo
-• Evitar dependências circulares
-• Usar guardas de inclusão (#ifndef)
-• Organizar protótipos e implementações
-
-Solução adotada:
-• Estrutura clara: funcoes.h (declarações), funcoes.c (implementações), 
-  main.c (lógica principal)
-• Comentários detalhados em cada arquivo
-• Separação lógica de responsabilidades
-
-
-7.7 VALIDAÇÃO DE ENTRADA DO USUÁRIO
-───────────────────────────────────────────────────────────────────────────
-
-Garantir que o usuário digite valores válidos:
-• Verificar opções de menu
-• Tratar entrada de dados inesperada
-• Evitar loops infinitos
-
-Solução adotada:
-• Loops while para validação
-• Mensagens de erro claras
-• Default case no switch
-
-
-═══════════════════════════════════════════════════════════════════════════
-
-
-8. CONCEITOS DE PROGRAMAÇÃO APLICADOS
-═══════════════════════════════════════════════════════════════════════════
-
-Este projeto demonstra de forma prática e integrada os seguintes conceitos:
-
-8.1 PARADIGMA PROCEDURAL
-  • Organização em funções
-  • Decomposição de problemas complexos em funções menores
-  • Reutilização de código
-
-8.2 ESTRUTURAS DE DADOS
-  • Tipos primitivos (int, char, etc.)
-  • Arrays (vetores e matrizes)
-  • Strings (arrays de caracteres)
-  • Structs (estruturas heterogêneas)
-  • Structs aninhadas
-
-8.3 GERENCIAMENTO DE MEMÓRIA
-  • Memória estática (variáveis locais e globais)
-  • Memória dinâmica (heap)
-  • Alocação (malloc)
-  • Realocação (realloc)
-  • Liberação (free)
-
-8.4 PONTEIROS
-  • Conceito de endereço de memória
-  • Operadores & e *
-  • Ponteiros como parâmetros de função
-  • Ponteiros para structs
-  • Ponteiros para ponteiros
-
-8.5 ENTRADA E SAÍDA
-  • Entrada padrão (scanf, fgets)
-  • Saída padrão (printf)
-  • Arquivos (fopen, fclose, fscanf, fprintf)
-
-8.6 ALGORITMOS
-  • Algoritmo de ordenação (Bubble Sort)
-  • Lógica de jogo (sistema de turnos)
-  • Validação de dados
-
-8.7 MODULARIZAÇÃO
-  • Separação de interface (.h) e implementação (.c)
-  • Organização em diretórios
-  • Compilação de múltiplos arquivos
-
-8.8 BOAS PRÁTICAS
-  • Nomenclatura significativa
-  • Comentários explicativos
-  • Indentação consistente
-  • Tratamento de erros
-  • Constantes em vez de números mágicos
-
-
-═══════════════════════════════════════════════════════════════════════════
-
-
-9. CONCLUSÃO
-═══════════════════════════════════════════════════════════════════════════
-
-O desenvolvimento deste projeto proporcionou uma compreensão profunda e 
-prática dos principais conceitos de programação em linguagem C.
-
 APRENDIZADOS PRINCIPAIS:
 
-1. DOMÍNIO DE PONTEIROS
+ DOMÍNIO DE PONTEIROS
    O uso extensivo de ponteiros em diversas situações (passagem por referência,
    alocação dinâmica, manipulação de arrays) consolidou o entendimento deste
    conceito fundamental da linguagem C.
 
-2. GERENCIAMENTO DE MEMÓRIA
+ GERENCIAMENTO DE MEMÓRIA
    A necessidade de alocar e liberar memória manualmente desenvolveu consciência
    sobre recursos do sistema e responsabilidade do programador.
 
-3. ORGANIZAÇÃO DE CÓDIGO
+ ORGANIZAÇÃO DE CÓDIGO
    A modularização do projeto em múltiplos arquivos demonstrou a importância
    de estruturar código de forma clara e manutenível.
 
-4. PERSISTÊNCIA DE DADOS
+ PERSISTÊNCIA DE DADOS
    A implementação do sistema de ranking com arquivos ensinou como programas
    podem manter estado entre execuções.
 
-5. INTEGRAÇÃO DE CONCEITOS
+ INTEGRAÇÃO DE CONCEITOS
    Mais importante que conhecer cada conceito isoladamente, o projeto demonstrou
    como integrá-los em uma aplicação funcional e coesa.
 
-6. DEPURAÇÃO E RESOLUÇÃO DE PROBLEMAS
+ DEPURAÇÃO E RESOLUÇÃO DE PROBLEMAS
    Encontrar e corrigir erros comuns de C (segmentation fault, memory leaks,
    buffer overflow) desenvolveu habilidades essenciais de debugging.
-
-7. DESIGN DE SOFTWARE
-   Planejar estruturas de dados, fluxo do programa e interação com usuário
-   antes de codificar mostrou-se crucial para o sucesso do projeto.
-
 
 APLICABILIDADE:
 
@@ -614,40 +138,22 @@ Os conhecimentos adquiridos neste projeto são fundamentais para:
 • Desenvolvimento de sistemas embarcados
 • Programação de baixo nível
 • Compreensão de como linguagens de alto nível funcionam
-• Base para aprender C++, Rust e outras linguagens
+• Base para aprender C++,
 • Desenvolvimento de sistemas operacionais e drivers
 • Programação de alto desempenho
 
-
-POSSÍVEIS EXTENSÕES FUTURAS:
-
-O projeto poderia ser expandido com:
-• Sistema de save/load de partidas em andamento
-• Mais capítulos e ramificações narrativas
-• Sistema de itens mágicos colecionáveis
-• Múltiplos tipos de personagem (classes)
-• Combate por turnos mais elaborado
-• Interface gráfica (usando bibliotecas como ncurses)
-• Multiplayer local
-• Sistema de achievements
-
-
 CONSIDERAÇÕES FINAIS:
 
-Este projeto demonstra que é possível criar aplicações interessantes e 
+Este projeto mostra que é possível criar aplicações interessantes e 
 funcionais mesmo com conceitos fundamentais de programação. A linguagem C,
-apesar de sua idade, continua sendo essencial para compreender profundamente
+continua sendo essencial para compreender profundamente
 como computadores funcionam.
 
 O desenvolvimento deste jogo não apenas atendeu aos requisitos técnicos da
 disciplina, mas também proporcionou uma experiência prática e divertida de
 aplicar teoria em um projeto concreto.
 
-
-═══════════════════════════════════════════════════════════════════════════
-
-FIM DA DOCUMENTAÇÃO
-
 Projeto desenvolvido como trabalho prático de Programação em C
+por Pedro Lucas Lobato Munhoz e joão Vitor Antunes dos Santos
 UTFPR - Universidade Tecnológica Federal do Paraná
 ═══════════════════════════════════════════════════════════════════════════

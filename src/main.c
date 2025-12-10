@@ -4,7 +4,7 @@
  // Executa uma campanha completa do jogo
  
 void executarCampanha(Jogador *jogador, EntradaRanking **ranking, int *quantidadeRanking) {
-    // Vetor de eventos (REQUISITO: vetor de struct)
+    // Array de eventos da campanha (REQUISITO: vetor de struct)
     Evento eventos[NUM_CAPITULOS];
     
     // Inicializa eventos com narrativa
